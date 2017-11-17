@@ -1,0 +1,2 @@
+float64 timestamp
+string message

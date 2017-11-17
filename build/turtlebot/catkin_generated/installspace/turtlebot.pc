@@ -1,0 +1,8 @@
+prefix=/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/install
+
+Name: turtlebot
+Description: Description of turtlebot
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/install/lib 
+Requires: 
