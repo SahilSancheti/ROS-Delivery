@@ -40,15 +40,15 @@ class GoToPose():
         # Allow up to 5 seconds for the action server to come up
         self.move_base.wait_for_server(rospy.Duration(5))
 
-    def goto(self, pos, quat):
+    def goto(self, x, y):
 
         # Send a goal
         self.goal_sent = True
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = 'map'
         goal.target_pose.header.stamp = rospy.Time.now()
-        goal.target_pose.pose = Pose(Point(pos['x'], pos['y'], 0.000),
-                                         Quaternion(quat['r1'], quat['r2'], quat['r3'], quat['r4']))
+        goal.target_pose.pose = Pose(Point(x*1.0, y*1.0, 0.000),
+                                         Quaternion(0.0,0.0,.94,.31))
 
         # Start moving
         self.move_base.send_goal(goal)
@@ -80,11 +80,11 @@ if __name__ == '__main__':
         navigator = GoToPose()
 
         # Customize the following values so they are appropriate for your location
-        position = {'x': -0.5, 'y' : -0.5}
-        quaternion = {'r1' : 0.000, 'r2' : 0.000, 'r3' : 0.000, 'r4' : 1.000}
+        # position = {'x': -0.5, 'y' : -0.5}
+        # quaternion = {'r1' : 0.000, 'r2' : 0.000, 'r3' : 0.000, 'r4' : 1.000}
 
-        rospy.loginfo("Go to (%s, %s) pose", position['x'], position['y'])
-        success = navigator.goto(position, quaternion)
+        # rospy.loginfo("Go to (%s, %s) pose", position['x'], position['y'])
+        success = navigator.goto(1, 2)
 
         if success:
             rospy.loginfo("Hooray, reached the desired pose")

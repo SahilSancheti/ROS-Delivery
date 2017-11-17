@@ -7,10 +7,11 @@
 #Import the rospy package. For an import to work, it must be specified
 #in both the package manifest AND the Python file in which it is used.
 import rospy
-from my_chatter.msg import TimestampString
+# from my_chatter.msg import TimestampString
 #Import the String message type from the /msg directory of
 #the std_msgs package.
-from std_msgs.msg import String
+# from std_msgs.msg import String
+from geometry_msgs.msg import Point
 
 #Define the method which contains the main functionality of the node.
 def talker():
@@ -22,7 +23,7 @@ def talker():
   #Create an instance of the rospy.Publisher object which we can 
   #use to publish messages to a topic. This publisher publishes 
   #messages of type std_msgs/String to the topic /chatter_talk
-  pub = rospy.Publisher('turtlebot_dest', TimestampString, queue_size=10)
+  pub = rospy.Publisher('turtlebot_dest', Point, queue_size=10)
   
   # Create a timer object that will sleep long enough to result in
   # a 10Hz publishing rate
@@ -33,10 +34,11 @@ def talker():
     # Construct a string that we want to publish
     # (In Python, the "%" operator functions similarly
     #  to sprintf in C or MATLAB)
-    pub_string = raw_input("Please enter a coordinate x y <Enter>:\n")
+    pub_string = raw_input("Please enter a coordinate x y <Enter>:\n").split()
     
     # Publish our string to the 'chatter_talk' topic
-    pub.publish(TimestampString(rospy.get_time(), pub_string))
+
+    pub.publish(Point(float(pub_string[0]), float(pub_string[1]), 0))
     
     # Use our rate object to sleep until it is time to publish again
     r.sleep()
