@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <!-- Start the Baxter pick and place demo -->
+  <node pkg="sawyer" type="pick_and_place.py" name="pick_and_place" />
+</launch>
