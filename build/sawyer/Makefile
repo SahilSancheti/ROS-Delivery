@@ -150,104 +150,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-sawyer/CMakeFiles/_catkin_empty_exported_target.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : sawyer/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: sawyer/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/_catkin_empty_exported_target.dir/build.make sawyer/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : sawyer/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_cpp: sawyer/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : actionlib_generate_messages_cpp
-
-# fast build rule for target.
-actionlib_generate_messages_cpp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make sawyer/CMakeFiles/actionlib_generate_messages_cpp.dir/build
-.PHONY : actionlib_generate_messages_cpp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : sawyer/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_lisp: sawyer/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : actionlib_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_generate_messages_lisp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make sawyer/CMakeFiles/actionlib_generate_messages_lisp.dir/build
-.PHONY : actionlib_generate_messages_lisp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/actionlib_generate_messages_py.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : sawyer/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_py: sawyer/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : actionlib_generate_messages_py
-
-# fast build rule for target.
-actionlib_generate_messages_py/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/actionlib_generate_messages_py.dir/build.make sawyer/CMakeFiles/actionlib_generate_messages_py.dir/build
-.PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-.PHONY : sawyer/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_cpp: sawyer/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-.PHONY : actionlib_msgs_generate_messages_cpp
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_cpp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make sawyer/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
-.PHONY : actionlib_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-.PHONY : sawyer/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_lisp: sawyer/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-.PHONY : actionlib_msgs_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_lisp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make sawyer/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
-.PHONY : actionlib_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-.PHONY : sawyer/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_py: sawyer/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-.PHONY : actionlib_msgs_generate_messages_py
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_py/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make sawyer/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
-.PHONY : actionlib_msgs_generate_messages_py/fast
-
-# Convenience name for target.
 sawyer/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule:
 	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
 .PHONY : sawyer/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
@@ -288,104 +190,6 @@ control_msgs_generate_messages_py: sawyer/CMakeFiles/control_msgs_generate_messa
 control_msgs_generate_messages_py/fast:
 	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/control_msgs_generate_messages_py.dir/build.make sawyer/CMakeFiles/control_msgs_generate_messages_py.dir/build
 .PHONY : control_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
-.PHONY : sawyer/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_gencfg: sawyer/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
-.PHONY : dynamic_reconfigure_gencfg
-
-# fast build rule for target.
-dynamic_reconfigure_gencfg/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make sawyer/CMakeFiles/dynamic_reconfigure_gencfg.dir/build
-.PHONY : dynamic_reconfigure_gencfg/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
-.PHONY : sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_cpp: sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
-.PHONY : dynamic_reconfigure_generate_messages_cpp
-
-# fast build rule for target.
-dynamic_reconfigure_generate_messages_cpp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build.make sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_cpp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
-.PHONY : sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_lisp: sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
-.PHONY : dynamic_reconfigure_generate_messages_lisp
-
-# fast build rule for target.
-dynamic_reconfigure_generate_messages_lisp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_lisp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
-.PHONY : sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_py: sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
-.PHONY : dynamic_reconfigure_generate_messages_py
-
-# fast build rule for target.
-dynamic_reconfigure_generate_messages_py/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make sawyer/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_py/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : sawyer/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_cpp: sawyer/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : geometry_msgs_generate_messages_cpp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make sawyer/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-.PHONY : sawyer/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_lisp: sawyer/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-.PHONY : geometry_msgs_generate_messages_lisp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_lisp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make sawyer/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
-.PHONY : geometry_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-.PHONY : sawyer/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_py: sawyer/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-.PHONY : geometry_msgs_generate_messages_py
-
-# fast build rule for target.
-geometry_msgs_generate_messages_py/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make sawyer/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
-.PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 sawyer/CMakeFiles/intera_core_msgs_generate_messages_cpp.dir/rule:
@@ -444,48 +248,6 @@ intera_interface_gencfg/fast:
 .PHONY : intera_interface_gencfg/fast
 
 # Convenience name for target.
-sawyer/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : sawyer/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_cpp: sawyer/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : sensor_msgs_generate_messages_cpp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make sawyer/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-.PHONY : sawyer/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_lisp: sawyer/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-.PHONY : sensor_msgs_generate_messages_lisp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_lisp/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make sawyer/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
-.PHONY : sensor_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-sawyer/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : sawyer/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_py: sawyer/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : sensor_msgs_generate_messages_py
-
-# fast build rule for target.
-sensor_msgs_generate_messages_py/fast:
-	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f sawyer/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make sawyer/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-.PHONY : sensor_msgs_generate_messages_py/fast
-
-# Convenience name for target.
 sawyer/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
 	cd /home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build && $(MAKE) -f CMakeFiles/Makefile2 sawyer/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
 .PHONY : sawyer/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
@@ -533,24 +295,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... _catkin_empty_exported_target"
-	@echo "... actionlib_generate_messages_cpp"
-	@echo "... actionlib_generate_messages_lisp"
-	@echo "... actionlib_generate_messages_py"
-	@echo "... actionlib_msgs_generate_messages_cpp"
-	@echo "... actionlib_msgs_generate_messages_lisp"
-	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... control_msgs_generate_messages_cpp"
 	@echo "... control_msgs_generate_messages_lisp"
 	@echo "... control_msgs_generate_messages_py"
-	@echo "... dynamic_reconfigure_gencfg"
-	@echo "... dynamic_reconfigure_generate_messages_cpp"
-	@echo "... dynamic_reconfigure_generate_messages_lisp"
-	@echo "... dynamic_reconfigure_generate_messages_py"
 	@echo "... edit_cache"
-	@echo "... geometry_msgs_generate_messages_cpp"
-	@echo "... geometry_msgs_generate_messages_lisp"
-	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
@@ -560,9 +308,6 @@ help:
 	@echo "... intera_interface_gencfg"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... sensor_msgs_generate_messages_cpp"
-	@echo "... sensor_msgs_generate_messages_lisp"
-	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... test"
 	@echo "... trajectory_msgs_generate_messages_cpp"
 	@echo "... trajectory_msgs_generate_messages_lisp"

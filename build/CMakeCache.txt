@@ -194,6 +194,9 @@ DOXYGEN_EXECUTABLE:FILEPATH=/usr/bin/doxygen
 //Doxygen found
 DOXYGEN_FOUND:BOOL=TRUE
 
+//Path to a file.
+EIGEN_INCLUDE_DIR:PATH=/usr/include/eigen3
+
 //Path to a program.
 EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 
@@ -224,6 +227,26 @@ LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests-2.7
 
+//Path where debug 3rdpaty OpenCV dependencies are located
+OpenCV_3RDPARTY_LIB_DIR_DBG:PATH=
+
+//Path where release 3rdpaty OpenCV dependencies are located
+OpenCV_3RDPARTY_LIB_DIR_OPT:PATH=
+
+OpenCV_CONFIG_PATH:FILEPATH=/usr/share/OpenCV
+
+//The directory containing a CMake configuration file for OpenCV.
+OpenCV_DIR:PATH=/usr/share/OpenCV
+
+//Path where debug OpenCV libraries are located
+OpenCV_LIB_DIR_DBG:PATH=
+
+//Path where release OpenCV libraries are located
+OpenCV_LIB_DIR_OPT:PATH=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
 
@@ -242,6 +265,12 @@ RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 //Enable debian style python package layout
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 
+//Path to a file.
+TinyXML_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+TinyXML_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libtinyxml.so
+
 //LSB Distrib tag
 UBUNTU:BOOL=TRUE
 
@@ -254,14 +283,41 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//Path to a file.
+_file_name:FILEPATH=/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/src/ar_track_alvar/test/marker_param_config-full.test
+
 //The directory containing a CMake configuration file for actionlib.
 actionlib_DIR:PATH=/opt/ros/indigo/share/actionlib/cmake
 
 //The directory containing a CMake configuration file for actionlib_msgs.
 actionlib_msgs_DIR:PATH=/opt/ros/indigo/share/actionlib_msgs/cmake
 
+//Value Computed by CMake
+ar_track_alvar_BINARY_DIR:STATIC=/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build/ar_track_alvar
+
+//Dependencies for the target
+ar_track_alvar_LIB_DEPENDS:STATIC=general;opencv_videostab;general;opencv_video;general;opencv_superres;general;opencv_stitching;general;opencv_photo;general;opencv_ocl;general;opencv_objdetect;general;opencv_ml;general;opencv_legacy;general;opencv_imgproc;general;opencv_highgui;general;opencv_gpu;general;opencv_flann;general;opencv_features2d;general;opencv_core;general;opencv_contrib;general;opencv_calib3d;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/indigo/lib/libimage_transport.so;general;/opt/ros/indigo/lib/libresource_retriever.so;general;/opt/ros/indigo/lib/libcv_bridge.so;general;/usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8;general;/opt/ros/indigo/lib/libpcl_ros_filters.so;general;/opt/ros/indigo/lib/libpcl_ros_io.so;general;/opt/ros/indigo/lib/libpcl_ros_tf.so;optimized;/usr/lib/libpcl_common.so;debug;/usr/lib/libpcl_common.so;optimized;/usr/lib/libpcl_octree.so;debug;/usr/lib/libpcl_octree.so;optimized;/usr/lib/libpcl_io.so;debug;/usr/lib/libpcl_io.so;optimized;/usr/lib/libpcl_kdtree.so;debug;/usr/lib/libpcl_kdtree.so;optimized;/usr/lib/libpcl_search.so;debug;/usr/lib/libpcl_search.so;optimized;/usr/lib/libpcl_sample_consensus.so;debug;/usr/lib/libpcl_sample_consensus.so;optimized;/usr/lib/libpcl_filters.so;debug;/usr/lib/libpcl_filters.so;optimized;/usr/lib/libpcl_features.so;debug;/usr/lib/libpcl_features.so;optimized;/usr/lib/libpcl_keypoints.so;debug;/usr/lib/libpcl_keypoints.so;optimized;/usr/lib/libpcl_segmentation.so;debug;/usr/lib/libpcl_segmentation.so;optimized;/usr/lib/libpcl_visualization.so;debug;/usr/lib/libpcl_visualization.so;optimized;/usr/lib/libpcl_outofcore.so;debug;/usr/lib/libpcl_outofcore.so;optimized;/usr/lib/libpcl_registration.so;debug;/usr/lib/libpcl_registration.so;optimized;/usr/lib/libpcl_recognition.so;debug;/usr/lib/libpcl_recognition.so;optimized;/usr/lib/libpcl_surface.so;debug;/usr/lib/libpcl_surface.so;optimized;/usr/lib/libpcl_people.so;debug;/usr/lib/libpcl_people.so;optimized;/usr/lib/libpcl_tracking.so;debug;/usr/lib/libpcl_tracking.so;optimized;/usr/lib/libpcl_apps.so;debug;/usr/lib/libpcl_apps.so;general;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so;general;/usr/lib/x86_64-linux-gnu/libboost_serialization.so;optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so;general;/usr/lib/libOpenNI.so;optimized;/usr/lib/x86_64-linux-gnu/libflann_cpp_s.a;debug;/usr/lib/x86_64-linux-gnu/libflann_cpp_s.a;general;/usr/lib/libvtkCommon.so.5.8.0;general;/usr/lib/libvtkRendering.so.5.8.0;general;/usr/lib/libvtkHybrid.so.5.8.0;general;/usr/lib/libvtkCharts.so.5.8.0;general;/opt/ros/indigo/lib/libnodeletlib.so;general;/opt/ros/indigo/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/indigo/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/indigo/lib/libroslib.so;general;/opt/ros/indigo/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/indigo/lib/librosbag.so;general;/opt/ros/indigo/lib/librosbag_storage.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/opt/ros/indigo/lib/libroslz4.so;general;/usr/lib/x86_64-linux-gnu/liblz4.so;general;/opt/ros/indigo/lib/libtopic_tools.so;general;/opt/ros/indigo/lib/libtf.so;general;/opt/ros/indigo/lib/libtf2_ros.so;general;/opt/ros/indigo/lib/libactionlib.so;general;/opt/ros/indigo/lib/libmessage_filters.so;general;/opt/ros/indigo/lib/libtf2.so;general;/opt/ros/indigo/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/opt/ros/indigo/lib/librosconsole.so;general;/opt/ros/indigo/lib/librosconsole_log4cxx.so;general;/opt/ros/indigo/lib/librosconsole_backend_interface.so;general;/usr/lib/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/indigo/lib/libxmlrpcpp.so;general;/opt/ros/indigo/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/indigo/lib/libroscpp_serialization.so;general;/opt/ros/indigo/lib/librostime.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/opt/ros/indigo/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+ar_track_alvar_SOURCE_DIR:STATIC=/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/src/ar_track_alvar
+
+//The directory containing a CMake configuration file for ar_track_alvar_msgs.
+ar_track_alvar_msgs_DIR:PATH=/opt/ros/indigo/share/ar_track_alvar_msgs/cmake
+
+//The directory containing a CMake configuration file for bond.
+bond_DIR:PATH=/opt/ros/indigo/share/bond/cmake
+
+//The directory containing a CMake configuration file for bondcpp.
+bondcpp_DIR:PATH=/opt/ros/indigo/share/bondcpp/cmake
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/indigo/share/catkin/cmake
+
+//The directory containing a CMake configuration file for class_loader.
+class_loader_DIR:PATH=/opt/ros/indigo/share/class_loader/cmake
+
+//The directory containing a CMake configuration file for cmake_modules.
+cmake_modules_DIR:PATH=/opt/ros/indigo/share/cmake_modules/cmake
 
 //The directory containing a CMake configuration file for control_msgs.
 control_msgs_DIR:PATH=/opt/ros/indigo/share/control_msgs/cmake
@@ -315,17 +371,56 @@ gtest_force_shared_crt:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//The directory containing a CMake configuration file for image_transport.
+image_transport_DIR:PATH=/opt/ros/indigo/share/image_transport/cmake
+
 //The directory containing a CMake configuration file for intera_core_msgs.
 intera_core_msgs_DIR:PATH=/scratch/shared/baxter_ws/devel/share/intera_core_msgs/cmake
 
 //The directory containing a CMake configuration file for intera_interface.
 intera_interface_DIR:PATH=/scratch/shared/baxter_ws/devel/share/intera_interface/cmake
 
+//Dependencies for the target
+kinect_filtering_LIB_DEPENDS:STATIC=general;/opt/ros/indigo/lib/libimage_transport.so;general;/opt/ros/indigo/lib/libresource_retriever.so;general;/opt/ros/indigo/lib/libcv_bridge.so;general;/usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8;general;/opt/ros/indigo/lib/libpcl_ros_filters.so;general;/opt/ros/indigo/lib/libpcl_ros_io.so;general;/opt/ros/indigo/lib/libpcl_ros_tf.so;optimized;/usr/lib/libpcl_common.so;debug;/usr/lib/libpcl_common.so;optimized;/usr/lib/libpcl_octree.so;debug;/usr/lib/libpcl_octree.so;optimized;/usr/lib/libpcl_io.so;debug;/usr/lib/libpcl_io.so;optimized;/usr/lib/libpcl_kdtree.so;debug;/usr/lib/libpcl_kdtree.so;optimized;/usr/lib/libpcl_search.so;debug;/usr/lib/libpcl_search.so;optimized;/usr/lib/libpcl_sample_consensus.so;debug;/usr/lib/libpcl_sample_consensus.so;optimized;/usr/lib/libpcl_filters.so;debug;/usr/lib/libpcl_filters.so;optimized;/usr/lib/libpcl_features.so;debug;/usr/lib/libpcl_features.so;optimized;/usr/lib/libpcl_keypoints.so;debug;/usr/lib/libpcl_keypoints.so;optimized;/usr/lib/libpcl_segmentation.so;debug;/usr/lib/libpcl_segmentation.so;optimized;/usr/lib/libpcl_visualization.so;debug;/usr/lib/libpcl_visualization.so;optimized;/usr/lib/libpcl_outofcore.so;debug;/usr/lib/libpcl_outofcore.so;optimized;/usr/lib/libpcl_registration.so;debug;/usr/lib/libpcl_registration.so;optimized;/usr/lib/libpcl_recognition.so;debug;/usr/lib/libpcl_recognition.so;optimized;/usr/lib/libpcl_surface.so;debug;/usr/lib/libpcl_surface.so;optimized;/usr/lib/libpcl_people.so;debug;/usr/lib/libpcl_people.so;optimized;/usr/lib/libpcl_tracking.so;debug;/usr/lib/libpcl_tracking.so;optimized;/usr/lib/libpcl_apps.so;debug;/usr/lib/libpcl_apps.so;general;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so;general;/usr/lib/x86_64-linux-gnu/libboost_serialization.so;optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so;general;/usr/lib/libOpenNI.so;optimized;/usr/lib/x86_64-linux-gnu/libflann_cpp_s.a;debug;/usr/lib/x86_64-linux-gnu/libflann_cpp_s.a;general;/usr/lib/libvtkCommon.so.5.8.0;general;/usr/lib/libvtkRendering.so.5.8.0;general;/usr/lib/libvtkHybrid.so.5.8.0;general;/usr/lib/libvtkCharts.so.5.8.0;general;/opt/ros/indigo/lib/libnodeletlib.so;general;/opt/ros/indigo/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/indigo/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/indigo/lib/libroslib.so;general;/opt/ros/indigo/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/indigo/lib/librosbag.so;general;/opt/ros/indigo/lib/librosbag_storage.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/opt/ros/indigo/lib/libroslz4.so;general;/usr/lib/x86_64-linux-gnu/liblz4.so;general;/opt/ros/indigo/lib/libtopic_tools.so;general;/opt/ros/indigo/lib/libtf.so;general;/opt/ros/indigo/lib/libtf2_ros.so;general;/opt/ros/indigo/lib/libactionlib.so;general;/opt/ros/indigo/lib/libmessage_filters.so;general;/opt/ros/indigo/lib/libtf2.so;general;/opt/ros/indigo/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/opt/ros/indigo/lib/librosconsole.so;general;/opt/ros/indigo/lib/librosconsole_log4cxx.so;general;/opt/ros/indigo/lib/librosconsole_backend_interface.so;general;/usr/lib/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/indigo/lib/libxmlrpcpp.so;general;/opt/ros/indigo/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/indigo/lib/libroscpp_serialization.so;general;/opt/ros/indigo/lib/librostime.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/opt/ros/indigo/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/indigo/lib/libdynamic_reconfigure_config_init_mutex.so
 
+//Dependencies for the target
+medianFilter_LIB_DEPENDS:STATIC=general;ar_track_alvar;general;/opt/ros/indigo/lib/libimage_transport.so;general;/opt/ros/indigo/lib/libresource_retriever.so;general;/opt/ros/indigo/lib/libcv_bridge.so;general;/usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8;general;/usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8;general;/opt/ros/indigo/lib/libpcl_ros_filters.so;general;/opt/ros/indigo/lib/libpcl_ros_io.so;general;/opt/ros/indigo/lib/libpcl_ros_tf.so;optimized;/usr/lib/libpcl_common.so;debug;/usr/lib/libpcl_common.so;optimized;/usr/lib/libpcl_octree.so;debug;/usr/lib/libpcl_octree.so;optimized;/usr/lib/libpcl_io.so;debug;/usr/lib/libpcl_io.so;optimized;/usr/lib/libpcl_kdtree.so;debug;/usr/lib/libpcl_kdtree.so;optimized;/usr/lib/libpcl_search.so;debug;/usr/lib/libpcl_search.so;optimized;/usr/lib/libpcl_sample_consensus.so;debug;/usr/lib/libpcl_sample_consensus.so;optimized;/usr/lib/libpcl_filters.so;debug;/usr/lib/libpcl_filters.so;optimized;/usr/lib/libpcl_features.so;debug;/usr/lib/libpcl_features.so;optimized;/usr/lib/libpcl_keypoints.so;debug;/usr/lib/libpcl_keypoints.so;optimized;/usr/lib/libpcl_segmentation.so;debug;/usr/lib/libpcl_segmentation.so;optimized;/usr/lib/libpcl_visualization.so;debug;/usr/lib/libpcl_visualization.so;optimized;/usr/lib/libpcl_outofcore.so;debug;/usr/lib/libpcl_outofcore.so;optimized;/usr/lib/libpcl_registration.so;debug;/usr/lib/libpcl_registration.so;optimized;/usr/lib/libpcl_recognition.so;debug;/usr/lib/libpcl_recognition.so;optimized;/usr/lib/libpcl_surface.so;debug;/usr/lib/libpcl_surface.so;optimized;/usr/lib/libpcl_people.so;debug;/usr/lib/libpcl_people.so;optimized;/usr/lib/libpcl_tracking.so;debug;/usr/lib/libpcl_tracking.so;optimized;/usr/lib/libpcl_apps.so;debug;/usr/lib/libpcl_apps.so;general;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so;general;/usr/lib/x86_64-linux-gnu/libboost_serialization.so;optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so;general;/usr/lib/libOpenNI.so;optimized;/usr/lib/x86_64-linux-gnu/libflann_cpp_s.a;debug;/usr/lib/x86_64-linux-gnu/libflann_cpp_s.a;general;/usr/lib/libvtkCommon.so.5.8.0;general;/usr/lib/libvtkRendering.so.5.8.0;general;/usr/lib/libvtkHybrid.so.5.8.0;general;/usr/lib/libvtkCharts.so.5.8.0;general;/opt/ros/indigo/lib/libnodeletlib.so;general;/opt/ros/indigo/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/indigo/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/indigo/lib/libroslib.so;general;/opt/ros/indigo/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/indigo/lib/librosbag.so;general;/opt/ros/indigo/lib/librosbag_storage.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/opt/ros/indigo/lib/libroslz4.so;general;/usr/lib/x86_64-linux-gnu/liblz4.so;general;/opt/ros/indigo/lib/libtopic_tools.so;general;/opt/ros/indigo/lib/libtf.so;general;/opt/ros/indigo/lib/libtf2_ros.so;general;/opt/ros/indigo/lib/libactionlib.so;general;/opt/ros/indigo/lib/libmessage_filters.so;general;/opt/ros/indigo/lib/libtf2.so;general;/opt/ros/indigo/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/opt/ros/indigo/lib/librosconsole.so;general;/opt/ros/indigo/lib/librosconsole_log4cxx.so;general;/opt/ros/indigo/lib/librosconsole_backend_interface.so;general;/usr/lib/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/indigo/lib/libxmlrpcpp.so;general;/opt/ros/indigo/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/indigo/lib/libroscpp_serialization.so;general;/opt/ros/indigo/lib/librostime.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/opt/ros/indigo/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//The directory containing a CMake configuration file for message_filters.
+message_filters_DIR:PATH=/opt/ros/indigo/share/message_filters/cmake
+
+//The directory containing a CMake configuration file for message_generation.
+message_generation_DIR:PATH=/opt/ros/indigo/share/message_generation/cmake
+
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/indigo/share/message_runtime/cmake
+
+//The directory containing a CMake configuration file for nodelet.
+nodelet_DIR:PATH=/opt/ros/indigo/share/nodelet/cmake
+
+//The directory containing a CMake configuration file for pcl_conversions.
+pcl_conversions_DIR:PATH=/opt/ros/indigo/share/pcl_conversions/cmake
+
+//The directory containing a CMake configuration file for pcl_msgs.
+pcl_msgs_DIR:PATH=/opt/ros/indigo/share/pcl_msgs/cmake
+
+//The directory containing a CMake configuration file for pcl_ros.
+pcl_ros_DIR:PATH=/opt/ros/indigo/share/pcl_ros/cmake
+
+//The directory containing a CMake configuration file for pluginlib.
+pluginlib_DIR:PATH=/opt/ros/indigo/share/pluginlib/cmake
+
+//The directory containing a CMake configuration file for resource_retriever.
+resource_retriever_DIR:PATH=/opt/ros/indigo/share/resource_retriever/cmake
+
+//The directory containing a CMake configuration file for rosbag.
+rosbag_DIR:PATH=/opt/ros/indigo/share/rosbag/cmake
+
+//The directory containing a CMake configuration file for rosbag_storage.
+rosbag_storage_DIR:PATH=/opt/ros/indigo/share/rosbag_storage/cmake
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/indigo/share/rosconsole/cmake
@@ -339,14 +434,32 @@ roscpp_serialization_DIR:PATH=/opt/ros/indigo/share/roscpp_serialization/cmake
 //The directory containing a CMake configuration file for roscpp_traits.
 roscpp_traits_DIR:PATH=/opt/ros/indigo/share/roscpp_traits/cmake
 
+//The directory containing a CMake configuration file for rosgraph.
+rosgraph_DIR:PATH=/opt/ros/indigo/share/rosgraph/cmake
+
 //The directory containing a CMake configuration file for rosgraph_msgs.
 rosgraph_msgs_DIR:PATH=/opt/ros/indigo/share/rosgraph_msgs/cmake
+
+//The directory containing a CMake configuration file for roslaunch.
+roslaunch_DIR:PATH=/opt/ros/indigo/share/roslaunch/cmake
+
+//The directory containing a CMake configuration file for roslib.
+roslib_DIR:PATH=/opt/ros/indigo/share/roslib/cmake
+
+//The directory containing a CMake configuration file for roslz4.
+roslz4_DIR:PATH=/opt/ros/indigo/share/roslz4/cmake
+
+//The directory containing a CMake configuration file for rospack.
+rospack_DIR:PATH=/opt/ros/indigo/share/rospack/cmake
 
 //The directory containing a CMake configuration file for rospkg.
 rospkg_DIR:PATH=rospkg_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/indigo/share/rospy/cmake
+
+//The directory containing a CMake configuration file for rostest.
+rostest_DIR:PATH=/opt/ros/indigo/share/rostest/cmake
 
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/indigo/share/rostime/cmake
@@ -360,8 +473,29 @@ sawyer_SOURCE_DIR:STATIC=/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/RO
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/indigo/share/sensor_msgs/cmake
 
+//The directory containing a CMake configuration file for smclib.
+smclib_DIR:PATH=/opt/ros/indigo/share/smclib/cmake
+
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/indigo/share/std_msgs/cmake
+
+//The directory containing a CMake configuration file for tf2.
+tf2_DIR:PATH=/opt/ros/indigo/share/tf2/cmake
+
+//The directory containing a CMake configuration file for tf2_msgs.
+tf2_msgs_DIR:PATH=/opt/ros/indigo/share/tf2_msgs/cmake
+
+//The directory containing a CMake configuration file for tf2_py.
+tf2_py_DIR:PATH=/opt/ros/indigo/share/tf2_py/cmake
+
+//The directory containing a CMake configuration file for tf2_ros.
+tf2_ros_DIR:PATH=/opt/ros/indigo/share/tf2_ros/cmake
+
+//The directory containing a CMake configuration file for tf.
+tf_DIR:PATH=/opt/ros/indigo/share/tf/cmake
+
+//The directory containing a CMake configuration file for topic_tools.
+topic_tools_DIR:PATH=/opt/ros/indigo/share/topic_tools/cmake
 
 //The directory containing a CMake configuration file for trajectory_msgs.
 trajectory_msgs_DIR:PATH=/opt/ros/indigo/share/trajectory_msgs/cmake
@@ -371,6 +505,9 @@ turtlebot_BINARY_DIR:STATIC=/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces
 
 //Value Computed by CMake
 turtlebot_SOURCE_DIR:STATIC=/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/src/turtlebot
+
+//The directory containing a CMake configuration file for visualization_msgs.
+visualization_msgs_DIR:PATH=/opt/ros/indigo/share/visualization_msgs/cmake
 
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/indigo/share/xmlrpcpp/cmake
@@ -477,7 +614,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=4
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -518,10 +655,18 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: EIGEN_INCLUDE_DIR
+EIGEN_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//Details about finding Eigen
+FIND_PACKAGE_MESSAGE_DETAILS_Eigen:INTERNAL=[/usr/include/eigen3][v()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.26()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.6()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding TinyXML
+FIND_PACKAGE_MESSAGE_DETAILS_TinyXML:INTERNAL=[/usr/lib/x86_64-linux-gnu/libtinyxml.so][/usr/include][v()]
 GTEST_FROM_SOURCE_FOUND:INTERNAL=TRUE
 GTEST_FROM_SOURCE_INCLUDE_DIRS:INTERNAL=/usr/include
 GTEST_FROM_SOURCE_LIBRARIES:INTERNAL=gtest
@@ -537,10 +682,61 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_3RDPARTY_LIB_DIR_DBG
+OpenCV_3RDPARTY_LIB_DIR_DBG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_3RDPARTY_LIB_DIR_OPT
+OpenCV_3RDPARTY_LIB_DIR_OPT-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_CONFIG_PATH
+OpenCV_CONFIG_PATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_LIB_DIR_DBG
+OpenCV_LIB_DIR_DBG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenCV_LIB_DIR_OPT
+OpenCV_LIB_DIR_OPT-ADVANCED:INTERNAL=1
+PC_EIGEN_CFLAGS:INTERNAL=-I/usr/include/eigen3
+PC_EIGEN_CFLAGS_I:INTERNAL=
+PC_EIGEN_CFLAGS_OTHER:INTERNAL=
+PC_EIGEN_FOUND:INTERNAL=1
+PC_EIGEN_INCLUDEDIR:INTERNAL=
+PC_EIGEN_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
+PC_EIGEN_LDFLAGS:INTERNAL=
+PC_EIGEN_LDFLAGS_OTHER:INTERNAL=
+PC_EIGEN_LIBDIR:INTERNAL=
+PC_EIGEN_LIBRARIES:INTERNAL=
+PC_EIGEN_LIBRARY_DIRS:INTERNAL=
+PC_EIGEN_LIBS:INTERNAL=
+PC_EIGEN_LIBS_L:INTERNAL=
+PC_EIGEN_LIBS_OTHER:INTERNAL=
+PC_EIGEN_LIBS_PATHS:INTERNAL=
+PC_EIGEN_PREFIX:INTERNAL=
+PC_EIGEN_STATIC_CFLAGS:INTERNAL=-I/usr/include/eigen3
+PC_EIGEN_STATIC_CFLAGS_I:INTERNAL=
+PC_EIGEN_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_EIGEN_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
+PC_EIGEN_STATIC_LDFLAGS:INTERNAL=
+PC_EIGEN_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_EIGEN_STATIC_LIBDIR:INTERNAL=
+PC_EIGEN_STATIC_LIBRARIES:INTERNAL=
+PC_EIGEN_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_EIGEN_STATIC_LIBS:INTERNAL=
+PC_EIGEN_STATIC_LIBS_L:INTERNAL=
+PC_EIGEN_STATIC_LIBS_OTHER:INTERNAL=
+PC_EIGEN_STATIC_LIBS_PATHS:INTERNAL=
+PC_EIGEN_VERSION:INTERNAL=3.2.0
+PC_EIGEN_eigen3_INCLUDEDIR:INTERNAL=
+PC_EIGEN_eigen3_LIBDIR:INTERNAL=
+PC_EIGEN_eigen3_PREFIX:INTERNAL=
+PC_EIGEN_eigen3_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
+//ADVANCED property for variable: TinyXML_INCLUDE_DIR
+TinyXML_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TinyXML_LIBRARY
+TinyXML_LIBRARY-ADVANCED:INTERNAL=1
+__pkg_config_checked_PC_EIGEN:INTERNAL=1
 

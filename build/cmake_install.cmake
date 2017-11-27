@@ -117,6 +117,7 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unsp
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   INCLUDE("/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build/gtest/cmake_install.cmake")
+  INCLUDE("/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build/ar_track_alvar/cmake_install.cmake")
   INCLUDE("/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build/turtlebot/cmake_install.cmake")
   INCLUDE("/home/cc/ee106a/fa17/class/ee106a-aar/ros_workspaces/ROS-Delivery/build/sawyer/cmake_install.cmake")
 
