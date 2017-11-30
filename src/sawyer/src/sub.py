@@ -9,7 +9,7 @@ import rospy
 from std_msgs.msg import String
 from geometry_msgs.msg import Point
 from tf2_msgs.msg import TFMessage
-
+import numpy as np
 #Define the callback method which is called whenever this node receives a 
 #message on its subscribed topic. The received message is passed as the 
 #first argument to callback().
@@ -21,11 +21,15 @@ def callback(data):
         print("Translation",data.transforms[0].transform.translation)
         print("Orientation",data.transforms[0].transform.rotation)
     # print "Message:", data.x, data.y, "Received at:", rospy.get_time()
-
-
-
-    
-
+        x = data.transforms[0].transform.rotation.x
+        y = data.transforms[0].transform.rotation.y
+        z = data.transforms[0].transform.rotation.z
+        w = data.transforms[0].transform.rotation.w
+        alpha = np.arccos(w)*2
+        betax = np.arccos(x/np.sin(alpha/2))
+        betay = np.arccos(y/np.sin(alpha/2))
+        betaz = np.arccos(z/np.sin(alpha/2))
+        print(betax,betay,betaz)
     # if success:
     #     rospy.loginfo("Hooray, reached the desired pose")
     # else:

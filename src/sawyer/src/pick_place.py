@@ -30,7 +30,7 @@ class PickAndPlace(object):
     def __init__(self, limb, start_pose, hover_distance=0.15, base_id=14, dest_ids=[0, 1, 3, 5], verbose=True):
         self.start_pose = start_pose
         # TODO: The base_id and dest_ids can change when webcam_track is newly launched. Should be set by user input.
-        self.base = base = "ar_marker_" + str(base_id)
+        self.base = "base_marker"
         self.dest_ids = dest_ids
         self.destinations = []
         self.queue = Queue.Queue()
@@ -78,11 +78,9 @@ class PickAndPlace(object):
             for dest_id in self.dest_ids:
                 dest = "ar_marker_" + str(dest_id)
                 if self.tf.frameExists(self.base) and self.tf.frameExists(dest):
-                    point, quaternion = self.tf.lookupTransform(dest, self.base, self.tf.getLatestCommonTime(self.base, dest))
-                    position = list_to_point([point[2], point[1], point[0]])
-                    q = quaternion_from_euler(0, -math.pi/2, 0)
-                    orientation = list_to_quaternion(quaternion_multiply(q,quaternion))
-                    self.destinations.append(Pose(position=position, orientation=orientation))
+                    point, quaternion = self.tf.lookupTransform(self.base, dest, self.tf.getLatestCommonTime(self.base, dest))
+                    position = list_to_point(point)
+                    self.destinations.append(Pose(position=position, orientation=self.start_pose.orientation))
 
     def add_new_objects_to_queue(self):
         # TODO: ar_marker_6 hardcoded for now.
@@ -91,12 +89,10 @@ class PickAndPlace(object):
         if self._verbose: print("Checking if " + self.base + " and " + pick_obj + " both exist.")
         if self.tf.frameExists(self.base) and self.tf.frameExists(pick_obj):
             if self._verbose: print(self.base + " and " + pick_obj + " both exist.")
-            point, quaternion = self.tf.lookupTransform(pick_obj, self.base, self.tf.getLatestCommonTime(self.base, pick_obj))
-            position = list_to_point([point[2], point[1], point[0]])
-            q = quaternion_from_euler(0, -math.pi/2, 0)
-            orientation = list_to_quaternion(quaternion_multiply(q, quaternion))
+            point, quaternion = self.tf.lookupTransform(self.base, pick_obj, self.tf.getLatestCommonTime(self.base, pick_obj))
+            position = list_to_point(point)
             print("Adding " + pick_obj + " to queue")
-            obj_location = Pose(position=position, orientation=orientation)
+            obj_location = Pose(position=position, orientation=self.start_pose.orientation)
             print("Picking Object from:", obj_location)
             self.queue.put(obj_location)
 
@@ -109,6 +105,8 @@ class PickAndPlace(object):
             self.pick(start_pose)
             print("\nPlacing...")
             self.place(end_pose)
+            print("\Resetting...")
+            self.move_to_start()
 
     # def ik_request(self, pose):
     #     # Desired orientation for the end effector
@@ -193,7 +191,8 @@ class PickAndPlace(object):
         # approach with a pose the hover-distance above the requested pose
         approach.position.z = approach.position.z + self._hover_distance
         # limb, plan = self.ik_request(approach)
-        self._guarded_move_to_joint_position(approach)
+        print("approaching:", approach)
+        self._guarded_move_to_joint_position(pose)
 
     def _retract(self):
         # retrieve current pose from endpoint

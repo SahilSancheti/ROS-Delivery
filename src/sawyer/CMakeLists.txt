@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   tf2_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -107,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES sawyer
-#  CATKIN_DEPENDS intera_interface roscpp rospy std_msgs
+#  CATKIN_DEPENDS intera_interface roscpp rospy std_msgs tf
 #  DEPENDS system_lib
 )
 

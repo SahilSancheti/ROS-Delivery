@@ -47,4 +47,6 @@
   <!-- If database loading was enabled, start mongodb as well -->
   <include file="$(find sawyer_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>
 
+  <!-- <node pkg="tf" type="static_transform_publisher" name="base_marker" args="0 0 0 0 -1.5708 0 ar_marker_14 base_marker 100" /> -->
+
 </launch>
