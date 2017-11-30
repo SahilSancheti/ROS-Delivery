@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import math
 import struct
 import sys
 import copy
@@ -6,10 +7,11 @@ import Queue
 
 import rospy
 from geometry_msgs.msg import PoseStamped, Pose, Point, Quaternion
-from moveit_commander import MoveGroupCommander
-from moveit_msgs.msg import OrientationConstraint, Constraints
+from moveit_commander import RobotCommander, MoveGroupCommander, PlanningSceneInterface
+from moveit_msgs.msg import PlanningScene, OrientationConstraint, Constraints
 from moveit_msgs.srv import GetPositionIK, GetPositionIKRequest, GetPositionIKResponse
 from tf import TransformListener
+from tf.transformations import quaternion_from_euler, quaternion_multiply
 import numpy as np
 from numpy import linalg
 from time import sleep
@@ -25,13 +27,28 @@ def list_to_quaternion(q):
     return Quaternion(x=q[0], y=q[1], z=q[2], w=q[3])
 
 class PickAndPlace(object):
-    def __init__(self, limb, starting_joint_angles, hover_distance=0.15, base_id=4, dest_ids=[0, 1, 3, 5], verbose=True):
-        self.starting_joint_angles = starting_joint_angles
+    def __init__(self, limb, start_pose, hover_distance=0.15, base_id=14, dest_ids=[0, 1, 3, 5], verbose=True):
+        self.start_pose = start_pose
         # TODO: The base_id and dest_ids can change when webcam_track is newly launched. Should be set by user input.
         self.base = base = "ar_marker_" + str(base_id)
         self.dest_ids = dest_ids
         self.destinations = []
         self.queue = Queue.Queue()
+        self.scene_pub = rospy.Publisher('/planning_scene', PlanningScene)
+        self.scene = PlanningSceneInterface()
+        # self.robot_frame = 'base'
+        rospy.sleep(2)
+        # self.add_collision_object('turtlebot',0.8,0.,-0.6,.5,1.5,.33)
+        self.add_collision_object('right_wall',0.,0.65,0.,4.,.1,4.)
+        self.add_collision_object('left_wall',0.,-0.8,0.,4.,.1,4.)
+        self.add_collision_object('back_wall',-0.6,0.,0.,.1,4.,4.)
+        self.plan_scene = PlanningScene()
+        self.plan_scene.is_diff = True
+        self.scene_pub.publish(self.plan_scene)
+        self.right_arm = MoveGroupCommander("right_arm")
+        self.right_arm.allow_replanning(True)
+        self.right_arm.set_planning_time(7)
+        # self.right_gripper = MoveGroupCommander("right_gripper")
         self._limb_name = limb # string
         self._hover_distance = hover_distance # in meters
         self._verbose = verbose # bool
@@ -47,27 +64,41 @@ class PickAndPlace(object):
         print("Enabling robot... ")
         self._rs.enable()
 
+    def add_collision_object(self,name,x,y,z,xs,ys,zs):
+        self.scene.remove_world_object(name)
+        o = PoseStamped()
+        # o.header.frame_id = self.robot_frame
+        o.pose.position.x = x
+        o.pose.position.y = y
+        o.pose.position.z = z
+        self.scene.attach_box('base', name, o, [xs,ys,zs])
+
     def set_destinations(self):
-        for dest_id in self.dest_ids:
-            dest = "ar_marker_" + str(dest_id)
-            if self.tf.frameExists(self.base) and self.tf.frameExists(dest):
-                point, quaternion = self.tf.lookupTransform(self.base, dest, self.tf.getLatestCommonTime(self.base, dest))
-                position = list_to_point(point)
-                orientation = list_to_quaternion(quaternion)
-                self.destinations.append(Pose(position=position, orientation=orientation))
+        while len(self.destinations) == 0:
+            for dest_id in self.dest_ids:
+                dest = "ar_marker_" + str(dest_id)
+                if self.tf.frameExists(self.base) and self.tf.frameExists(dest):
+                    point, quaternion = self.tf.lookupTransform(dest, self.base, self.tf.getLatestCommonTime(self.base, dest))
+                    position = list_to_point([point[2], point[1], point[0]])
+                    q = quaternion_from_euler(0, -math.pi/2, 0)
+                    orientation = list_to_quaternion(quaternion_multiply(q,quaternion))
+                    self.destinations.append(Pose(position=position, orientation=orientation))
 
     def add_new_objects_to_queue(self):
         # TODO: ar_marker_6 hardcoded for now.
-        pick_id = 5
+        pick_id = 17
         pick_obj = "ar_marker_" + str(pick_id)
         if self._verbose: print("Checking if " + self.base + " and " + pick_obj + " both exist.")
         if self.tf.frameExists(self.base) and self.tf.frameExists(pick_obj):
             if self._verbose: print(self.base + " and " + pick_obj + " both exist.")
-            point, quaternion = self.tf.lookupTransform(self.base, pick_obj, self.tf.getLatestCommonTime(self.base, pick_obj))
-            position = list_to_point(point)
-            orientation = list_to_quaternion(quaternion)
+            point, quaternion = self.tf.lookupTransform(pick_obj, self.base, self.tf.getLatestCommonTime(self.base, pick_obj))
+            position = list_to_point([point[2], point[1], point[0]])
+            q = quaternion_from_euler(0, -math.pi/2, 0)
+            orientation = list_to_quaternion(quaternion_multiply(q, quaternion))
             print("Adding " + pick_obj + " to queue")
-            self.queue.put(Pose(position=position, orientation=orientation))
+            obj_location = Pose(position=position, orientation=orientation)
+            print("Picking Object from:", obj_location)
+            self.queue.put(obj_location)
 
     def complete_pick_place(self):
         if not self.queue.empty():
@@ -79,51 +110,51 @@ class PickAndPlace(object):
             print("\nPlacing...")
             self.place(end_pose)
 
-    def ik_request(self, pose):
-        # Desired orientation for the end effector
-        if self._verbose: print("Position:", pose.position)
-        if self._verbose: print("Orientation:", pose.orientation)
+    # def ik_request(self, pose):
+    #     # Desired orientation for the end effector
+    #     if self._verbose: print("Position:", pose.position)
+    #     if self._verbose: print("Orientation:", pose.orientation)
 
-        #Construct the request
-        request = GetPositionIKRequest()
-        request.ik_request.group_name = "right_arm"
-        request.ik_request.ik_link_name = "right_gripper"
-        request.ik_request.attempts = 20
-        request.ik_request.pose_stamped.header.frame_id = "base"
+    #     #Construct the request
+    #     request = GetPositionIKRequest()
+    #     request.ik_request.group_name = "right_arm"
+    #     request.ik_request.ik_link_name = "right_gripper"
+    #     request.ik_request.attempts = 20
+    #     request.ik_request.pose_stamped.header.frame_id = "base"
 
-        request.ik_request.pose_stamped.pose.position.x = pose.position.x
-        request.ik_request.pose_stamped.pose.position.y = pose.position.y
-        request.ik_request.pose_stamped.pose.position.z = pose.position.z
-        request.ik_request.pose_stamped.pose.orientation.x = pose.orientation.x
-        request.ik_request.pose_stamped.pose.orientation.y = pose.orientation.y
-        request.ik_request.pose_stamped.pose.orientation.z = pose.orientation.z
-        request.ik_request.pose_stamped.pose.orientation.w = pose.orientation.w
+    #     request.ik_request.pose_stamped.pose.position.x = pose.position.x
+    #     request.ik_request.pose_stamped.pose.position.y = pose.position.y
+    #     request.ik_request.pose_stamped.pose.position.z = pose.position.z
+    #     request.ik_request.pose_stamped.pose.orientation.x = pose.orientation.x
+    #     request.ik_request.pose_stamped.pose.orientation.y = pose.orientation.y
+    #     request.ik_request.pose_stamped.pose.orientation.z = pose.orientation.z
+    #     request.ik_request.pose_stamped.pose.orientation.w = pose.orientation.w
 
-        right_arm = MoveGroupCommander(request.ik_request.group_name)
-        right_arm.set_planner_id('RRTConnectkConfigDefault')
-        right_arm.set_planning_time(10)
+    #     right_arm = MoveGroupCommander(request.ik_request.group_name)
+    #     right_arm.set_planner_id('RRTConnectkConfigDefault')
+    #     right_arm.set_planning_time(10)
 
-        # Setting position and orientation target
-        right_arm.set_pose_target(request.ik_request.pose_stamped)
+    #     # Setting position and orientation target
+    #     right_arm.set_pose_target(request.ik_request.pose_stamped)
 
-        orien_const = OrientationConstraint()
-        orien_const.link_name = "right_gripper";
-        orien_const.header.frame_id = "base";
-        orien_const.orientation.x = pose.orientation.x;
-        orien_const.orientation.y = pose.orientation.y;
-        orien_const.orientation.z = pose.orientation.z;
-        orien_const.orientation.w = pose.orientation.w;
-        orien_const.absolute_x_axis_tolerance = 0.1;
-        orien_const.absolute_y_axis_tolerance = 0.1;
-        orien_const.absolute_z_axis_tolerance = 0.1;
-        orien_const.weight = 1.0;
-        consts = Constraints()
-        consts.orientation_constraints = [orien_const]
-        right_arm.set_path_constraints(consts)
+    #     orien_const = OrientationConstraint()
+    #     orien_const.link_name = "right_gripper";
+    #     orien_const.header.frame_id = "base";
+    #     orien_const.orientation.x = pose.orientation.x;
+    #     orien_const.orientation.y = pose.orientation.y;
+    #     orien_const.orientation.z = pose.orientation.z;
+    #     orien_const.orientation.w = pose.orientation.w;
+    #     orien_const.absolute_x_axis_tolerance = 0.1;
+    #     orien_const.absolute_y_axis_tolerance = 0.1;
+    #     orien_const.absolute_z_axis_tolerance = 0.1;
+    #     orien_const.weight = 1.0;
+    #     consts = Constraints()
+    #     consts.orientation_constraints = [orien_const]
+    #     right_arm.set_path_constraints(consts)
 
-        right_plan = right_arm.plan()
+    #     right_plan = right_arm.plan()
 
-        return right_arm, right_plan
+    #     return right_arm, right_plan
         # print("Group:")
         # print(right_arm)
         # # Plan IK and execute
@@ -144,23 +175,25 @@ class PickAndPlace(object):
         #     print(limb_joints)
         # return limb_joints
 
-    def _guarded_move_to_joint_position(self, limb, plan):
-        if plan:
-            limb.execute(plan)
-        else:
-            rospy.logerr("No Joint Angles provided for move_to_joint_positions. Staying put.")
+    def _guarded_move_to_joint_position(self, pose):
+        # if plan:
+        #     limb.execute(plan)
+        # else:
+        #     rospy.logerr("No Joint Angles provided for move_to_joint_positions. Staying put.")
+        self.right_arm.set_pose_target(pose)
+        self.right_arm.go()
 
     def _servo_to_pose(self, pose):
         # servo down to release
-        limb, plan = self.ik_request(pose)
-        self._guarded_move_to_joint_position(limb, plan)
+        # limb, plan = self.ik_request(pose)
+        self._guarded_move_to_joint_position(pose)
 
     def _approach(self, pose):
         approach = copy.deepcopy(pose)
         # approach with a pose the hover-distance above the requested pose
         approach.position.z = approach.position.z + self._hover_distance
-        limb, plan = self.ik_request(approach)
-        self._guarded_move_to_joint_position(limb, plan)
+        # limb, plan = self.ik_request(approach)
+        self._guarded_move_to_joint_position(approach)
 
     def _retract(self):
         # retrieve current pose from endpoint
@@ -173,18 +206,19 @@ class PickAndPlace(object):
         ik_pose.orientation.y = current_pose['orientation'].y 
         ik_pose.orientation.z = current_pose['orientation'].z 
         ik_pose.orientation.w = current_pose['orientation'].w
-        limb, plan = self.ik_request(ik_pose)
+        # limb, plan = self.ik_request(ik_pose)
         # servo up from current pose
-        self._guarded_move_to_joint_position(limb, plan)
+        self._guarded_move_to_joint_position(ik_pose)
 
     def move_to_start(self):
         print("Moving the {0} arm to start pose...".format(self._limb_name))
-        if not self.starting_joint_angles:
-            self.starting_joint_angles = dict(zip(self._joint_names, [0]*7))
-        if self.starting_joint_angles:
-            self._limb.move_to_joint_positions(self.starting_joint_angles)
-        else:
-            rospy.logerr("No Joint Angles provided for move_to_joint_positions. Staying put.")
+        # if not self.starting_joint_angles:
+        #     self.starting_joint_angles = dict(zip(self._joint_names, [0]*7))
+        # if self.starting_joint_angles:
+        #     self._limb.move_to_joint_positions(self.starting_joint_angles)
+        # else:
+        #     rospy.logerr("No Joint Angles provided for move_to_joint_positions. Staying put.")
+        self._guarded_move_to_joint_position(self.start_pose)
         self.gripper_open()
         rospy.sleep(1.0)
         print("Running. Ctrl-c to quit")
@@ -240,6 +274,15 @@ def main():
                              'right_j5': -2.3929951171875,
                              'right_j6': -0.7705029296875}
 
+    start_pose = Pose()
+    start_pose.position.x = 0.561
+    start_pose.position.y = 0.012
+    start_pose.position.z = -0.152
+    start_pose.orientation.x = 0.997
+    start_pose.orientation.y = 0.070 
+    start_pose.orientation.z = 0.009
+    start_pose.orientation.w = 0.004
+
     # An orientation for gripper fingers to be overhead and parallel to the obj
     # overhead_orientation = Quaternion(x=-0.075, y=0.996, z=0.035,w=-0.017)
 
@@ -256,7 +299,7 @@ def main():
     #     position=Point(x=0.392, y=-0.694, z=-0.081),
     #     orientation=overhead_orientation))
 
-    pnp = PickAndPlace(limb, starting_joint_angles, hover_distance)
+    pnp = PickAndPlace(limb, start_pose, hover_distance)
     pnp.set_destinations()
     pnp.move_to_start()
     # idx = 0
