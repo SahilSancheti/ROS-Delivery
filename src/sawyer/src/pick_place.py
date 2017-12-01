@@ -34,7 +34,7 @@ class PickAndPlace(object):
         self.dest = "dest_marker"
         self.destinations = []
         self.queue = Queue.Queue()
-        self.scene_pub = rospy.Publisher('/planning_scene', PlanningScene)
+        self.scene_pub = rospy.Publisher('/planning_scene', PlanningScene, queue_size=10)
         self.scene = PlanningSceneInterface()
         # self.robot_frame = 'base'
         rospy.sleep(2)
@@ -46,6 +46,7 @@ class PickAndPlace(object):
         self.plan_scene.is_diff = True
         self.scene_pub.publish(self.plan_scene)
         self.right_arm = MoveGroupCommander("right_arm")
+        self.right_arm.set_planner_id('RRTConnectkConfigDefault')
         self.right_arm.allow_replanning(True)
         self.right_arm.set_planning_time(7)
         # self.right_gripper = MoveGroupCommander("right_gripper")
@@ -204,19 +205,6 @@ class PickAndPlace(object):
         # servo up from current pose
         self._guarded_move_to_joint_position(ik_pose)
 
-    def move_to_pre_pos(self, pre_pose):
-        print("Moving the {0} arm to pre pose...".format(self._limb_name))
-        # if not self.starting_joint_angles:
-        #     self.starting_joint_angles = dict(zip(self._joint_names, [0]*7))
-        # if self.starting_joint_angles:
-        #     self._limb.move_to_joint_positions(self.starting_joint_angles)
-        # else:
-        #     rospy.logerr("No Joint Angles provided for move_to_joint_positions. Staying put.")
-        self._guarded_move_to_joint_position(pre_pose)
-        self.gripper_open()
-        rospy.sleep(1.0)
-        print("Running. Ctrl-c to quit")
-
     def move_to_start(self):
         print("Moving the {0} arm to start pose...".format(self._limb_name))
         # if not self.starting_joint_angles:
@@ -281,15 +269,6 @@ def main():
                              'right_j5': -2.3929951171875,
                              'right_j6': -0.7705029296875}
 
-    pre_pose = Pose()
-    pre_pose.position.x = 0.636
-    pre_pose.position.y = -0.185
-    pre_pose.position.z = 0.741
-    pre_pose.orientation.x = 0.997
-    pre_pose.orientation.y = 0.070 
-    pre_pose.orientation.z =  0.009
-    pre_pose.orientation.w = 0.004
-
     start_pose = Pose()
     start_pose.position.x = 0.561
     start_pose.position.y = 0.012
@@ -317,10 +296,8 @@ def main():
 
     pnp = PickAndPlace(limb, start_pose, hover_distance)
     pnp.set_destinations()
-    pnp.move_to_pre_pos(pre_pose)
     pnp.move_to_start()
     # idx = 0
-    print(pnp.tf.getFrameStrings())
     while not rospy.is_shutdown():
         print("Looking for new objects to pick and place...")
         pnp.add_new_objects_to_queue()
