@@ -10,9 +10,9 @@ roslaunch ar_track_alvar webcam_track.launch
 rosrun rviz rviz
 
 rosrun tf static_transform_publisher .045 0 -.07 0 -1.5708 0 ar_marker_14 base_marker 100
-rosrun tf static_transform_publisher -.03 .01 .15 0 0 0 ar_marker_10 obj_marker 100
-rosrun tf static_transform_publishe-.22 .01 .5 0 0 0 ar_marker_3 dest_marker 100
-rosrun sawyer pick_place.py
+rosrun tf static_transform_publisher -0.02 .06 .11 0 0 0 ar_marker_6 obj_marker 100
+rosrun tf static_transform_publisher -.22 .06 .5 0 0 0 ar_marker_3 dest_marker 100
+rosrun sawyer run.sh
 
 #Check joint states
 rostopic echo robot/joint_states

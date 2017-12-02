@@ -81,16 +81,20 @@ class PickAndPlace(object):
                 position = list_to_point(point)
                 self.destinations.append(Pose(position=position, orientation=self.start_pose.orientation))
 
-    def add_new_objects_to_queue(self):
+    def add_new_objects_to_queue(self, sleep=True):
         if self._verbose: print("Checking if " + self.base + " and " + self.pick_obj + " both exist.")
         if self.tf.frameExists(self.base) and self.tf.frameExists(self.pick_obj):
-            if self._verbose: print(self.base + " and " + self.pick_obj + " both exist.")
-            point, quaternion = self.tf.lookupTransform(self.base, self.pick_obj, self.tf.getLatestCommonTime(self.base, self.pick_obj))
-            position = list_to_point(point)
-            print("Adding " + self.pick_obj + " to queue")
-            obj_location = Pose(position=position, orientation=self.start_pose.orientation)
-            print("Picking Object from:", obj_location)
-            self.queue.put(obj_location)
+            if sleep:
+                rospy.sleep(5.0)
+                self.add_new_objects_to_queue(sleep=False)
+            else:
+                if self._verbose: print(self.base + " and " + self.pick_obj + " both exist.")
+                point, quaternion = self.tf.lookupTransform(self.base, self.pick_obj, self.tf.getLatestCommonTime(self.base, self.pick_obj))
+                position = list_to_point(point)
+                print("Adding " + self.pick_obj + " to queue")
+                obj_location = Pose(position=position, orientation=self.start_pose.orientation)
+                print("Picking Object from:", obj_location)
+                self.queue.put(obj_location)
 
     def complete_pick_place(self):
         if not self.queue.empty():
@@ -185,10 +189,10 @@ class PickAndPlace(object):
     def _approach(self, pose):
         approach = copy.deepcopy(pose)
         # approach with a pose the hover-distance above the requested pose
-        approach.position.z = approach.position.z + self._hover_distance
+        approach.position.z += self._hover_distance
         # limb, plan = self.ik_request(approach)
         print("approaching:", approach)
-        self._guarded_move_to_joint_position(pose)
+        self._guarded_move_to_joint_position(approach)
 
     def _retract(self):
         # retrieve current pose from endpoint
@@ -258,7 +262,7 @@ def main():
     compute_ik = rospy.ServiceProxy('compute_ik', GetPositionIK)
 
     limb = 'right'
-    hover_distance = 0.15 # meters
+    hover_distance = 0.12 # meters
     # Starting Joint angles for right arm
     # TODO: May change so maybe need to set using user input
     starting_joint_angles = {'right_j0': 1.3476357421875,
@@ -300,8 +304,11 @@ def main():
     # idx = 0
     while not rospy.is_shutdown():
         print("Looking for new objects to pick and place...")
-        pnp.add_new_objects_to_queue()
-        pnp.complete_pick_place()
+        try:
+            pnp.add_new_objects_to_queue()
+            pnp.complete_pick_place()
+        except Exception:
+            print("Dest, Obj, or Base AR Tag not found. Retrying...")
     return 0
  
 #Python's syntax for a main() method

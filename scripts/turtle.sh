@@ -10,6 +10,6 @@ roslaunch turtlebot_teleop keyboard_teleop.launch
 
 # for autonomous driving
 roslaunch turtlebot_bringup minimal.launch
-roslaunch turtlebot_navigation amcl_demo.launch map_file:=/sahil/my_map.yaml
+roslaunch turtlebot_navigation amcl_demo.launch map_file:=/home/turtlebot/sahil/newmap.yaml
 # on local machine:
 roslaunch turtlebot_rviz_launchers view_navigation.launch --screen

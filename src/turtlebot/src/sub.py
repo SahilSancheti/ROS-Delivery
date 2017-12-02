@@ -37,13 +37,13 @@ def callback(data):
 
 #Define the method which contains the node's main functionality
 def listener():
-
+    print("hi")
     #Run this program as a new node in the ROS computation graph
     #called /listener_<id>, where <id> is a randomly generated numeric
     #string. This randomly generated name means we can start multiple
     #copies of this node without having multiple nodes with the same
     #name, which ROS doesn't allow.
-    rospy.init_node('listener', anonymous=True)
+    rospy.init_node('turtlebot_listener', anonymous=True)
 
     #Create a new instance of the rospy.Subscriber object which we can 
     #use to receive messages of type std_msgs/String from the topic /chatter_talk.

@@ -18,7 +18,7 @@ def talker():
 
   #Run this program as a new node in the ROS computation graph 
   #called /talker.
-  rospy.init_node('talker', anonymous=True)
+  rospy.init_node('turtle_talker', anonymous=True)
 
   #Create an instance of the rospy.Publisher object which we can 
   #use to publish messages to a topic. This publisher publishes 
@@ -34,10 +34,12 @@ def talker():
     # Construct a string that we want to publish
     # (In Python, the "%" operator functions similarly
     #  to sprintf in C or MATLAB)
+
+    #.154 .777
     pub_string = raw_input("Please enter a coordinate x y <Enter>:\n").split()
     
     # Publish our string to the 'chatter_talk' topic
-
+    pub_string = [.6,-3.5]
     pub.publish(Point(float(pub_string[0]), float(pub_string[1]), 0))
     
     # Use our rate object to sleep until it is time to publish again
