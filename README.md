@@ -36,3 +36,28 @@ In RViz, select “2D Pose Estimate” and click the map approximately where Tur
     rosrun turtlebot sub.py
     rosrun turtlebot pub.py
 
+# Running the Sawyer Pick and Place
+
+## SSH into the Sawyer robot to run code on Sawyer
+    ./baxter.sh
+
+## Run on Sawyer in different Terminal windows to initialize the robot
+    rosrun intera_interface enable_robot.py -e
+    rosrun intera_interface joint_trajectory_action_server.py
+    roslaunch sawyer_moveit_config sawyer_moveit.launch electric_gripper:=true
+
+## Run on the Workstation in different Terminal window to enable the USB camera and AR tracking
+    roslaunch ar_track_alvar webcam_track.launch
+    rosrun rviz rviz
+    
+## Run on Workstation to publish static transforms (may need to calibrate yourself)
+    rosrun tf static_transform_publisher .045 0 -.07 0 -1.5708 0 ar_marker_14 base_marker 100
+    rosrun tf static_transform_publisher -.01 .02 .15 0 0 0 ar_marker_6 obj_marker 100
+    rosrun tf static_transform_publisher -.08 0.0 .45 0 0 0 ar_marker_3 dest_marker 100
+
+## Run on Workstation to activate pick and place
+    rosrun sawyer run.sh
+
+## (Optional) Echo joint states and gripper locations for debugging
+    rosrun tf tf_echo base right_gripper
+    rostopic echo robot/joint_states
