@@ -1,6 +1,6 @@
 # ROS-Delivery
 Uses Kobuki TurtleBot 2 Platform to deliver items to and from Sawyer in ROS
-
+[![Alt text](https://img.youtube.com/vi/Up7FTVMkmsk/0.jpg)](https://www.youtube.com/watch?v=Up7FTVMkmsk)
 # Running the TurtleBot
 
 ## SSH into the TurtleBot
