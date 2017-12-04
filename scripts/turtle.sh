@@ -1,5 +1,5 @@
-ssh turtlebot@red.local
-export ROS_MASTER_URI=http://red.local:11311
+ssh turtlebot@yellow.local
+export ROS_MASTER_URI=http://yellow.local:11311
 # for mapping
 roslaunch turtlebot_bringup minimal.launch --screen 
 roslaunch turtlebot_navigation gmapping_demo.launch

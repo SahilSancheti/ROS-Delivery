@@ -107,7 +107,6 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "/opt/ros/indigo/share/control_msgs/cmake/control_msgsConfig.cmake"
   "/opt/ros/indigo/share/cpp_common/cmake/cpp_commonConfig-version.cmake"
   "/opt/ros/indigo/share/cpp_common/cmake/cpp_commonConfig.cmake"
-  "/opt/ros/indigo/share/cv_bridge/cmake/cv_bridge-extras.cmake"
   "/opt/ros/indigo/share/cv_bridge/cmake/cv_bridgeConfig-version.cmake"
   "/opt/ros/indigo/share/cv_bridge/cmake/cv_bridgeConfig.cmake"
   "/opt/ros/indigo/share/dynamic_reconfigure/cmake/../cmake/setup_custom_pythonpath.sh.in"

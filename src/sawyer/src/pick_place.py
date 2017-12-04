@@ -38,10 +38,11 @@ class PickAndPlace(object):
         self.scene = PlanningSceneInterface()
         # self.robot_frame = 'base'
         rospy.sleep(2)
-        # self.add_collision_object('turtlebot',0.8,0.,-0.6,.5,1.5,.33)
+        self.add_collision_object('turtlebot',0.8,0.,-0.65,.5,1.5,.33)
         self.add_collision_object('right_wall',0.,0.65,0.,4.,.1,4.)
         self.add_collision_object('left_wall',0.,-0.8,0.,4.,.1,4.)
         self.add_collision_object('back_wall',-0.6,0.,0.,.1,4.,4.)
+        self.add_collision_object('destination_table',.5,-.4,-.35,1,.5,.5)
         self.plan_scene = PlanningScene()
         self.plan_scene.is_diff = True
         self.scene_pub.publish(self.plan_scene)
@@ -85,7 +86,7 @@ class PickAndPlace(object):
         if self._verbose: print("Checking if " + self.base + " and " + self.pick_obj + " both exist.")
         if self.tf.frameExists(self.base) and self.tf.frameExists(self.pick_obj):
             if sleep:
-                rospy.sleep(5.0)
+                rospy.sleep(10.0)
                 self.add_new_objects_to_queue(sleep=False)
             else:
                 if self._verbose: print(self.base + " and " + self.pick_obj + " both exist.")
